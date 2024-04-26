@@ -5,7 +5,7 @@
 ![CocoaPods compatible](https://img.shields.io/badge/Cocoapods-compatible-4BC51D.svg?style=flat)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow)
 
-InAppTools is a library written in swift that let's you easily add mobile users to your mailing lists.
+InAppTools is a library written in Swift that let's you easily add mobile users to your mailing lists.
 
 ## Prerequisites
 

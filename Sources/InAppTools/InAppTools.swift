@@ -5,7 +5,7 @@ enum InAppToolsError: Error {
     case requestError(Int, String)  // HTTP 4xx / 5xx
 }
 
-class MailingList {
+public class MailingList {
     private let apiKey: String
     private let session: URLSession
     private let baseURL = URL(string: "https://api.inapptools.com/v1/")!
