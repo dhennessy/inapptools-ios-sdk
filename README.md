@@ -1,8 +1,9 @@
 # InAppTools
 
+![Platform: iOS](https://img.shields.io/badge/Platform-iOS-lightgray.svg?style=flat)
 ![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-4BC51D.svg?style=flat)
 ![CocoaPods compatible](https://img.shields.io/badge/Cocoapods-compatible-4BC51D.svg?style=flat)
-![License: MIT](https://img.shields.io/badge/License-MIT-green)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow)
 
 InAppTools is a library written in swift that let's you easily add mobile users to your mailing lists.
 
@@ -31,11 +32,11 @@ import InAppTools
 Then, once the user has entered their email address:
 
 ```
-    let member = try await MailingList(apiKey: apiKey).subscribe(listId: listId, email: email)
+let member = try await MailingList(apiKey: apiKey).subscribe(listId: listId, email: email)
 ```
 
 If the `subscribe` method throws an exception, the most likely causes are an incorrect apiKey, or an incorrect listId. 
-Calling `subscribe` with an email that's already subscribed to your mailing list will not cause an error.
+Calling `subscribe` with an email that is already subscribed to your mailing list will not cause an error.
 
 ## Installation
 
@@ -66,5 +67,5 @@ See [CHANGELOG.md](https://github.com/dhennessy/inapptools-ios-sdk/blob/main/CHA
 
 ## License
 
-InAppTools is available under the MIT license. See the LICENSE file for more info.
+InAppTools is available under the MIT license. See [LICENSE.md](https://github.com/dhennessy/inapptools-ios-sdk/blob/main/LICENSE.md) for more info.
 
