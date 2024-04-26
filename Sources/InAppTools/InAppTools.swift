@@ -10,7 +10,7 @@ public class MailingList {
     private let session: URLSession
     private let baseURL = URL(string: "https://api.inapptools.com/v1/")!
     
-    struct Member: Codable, Equatable {
+    public struct Member: Codable, Equatable {
         let uuid: String
         let email: String
     }
@@ -19,12 +19,12 @@ public class MailingList {
         let email: String?
     }
 
-    init(apiKey: String, session: URLSession = .shared) {
+    public init(apiKey: String, session: URLSession = .shared) {
         self.apiKey = apiKey
         self.session = session
     }
 
-    func subscribe(listId: String, email: String) async throws -> Member {
+    public func subscribe(listId: String, email: String) async throws -> Member {
         let url = baseURL.appendingPathComponent("lists/\(listId)/members/\(email)/")
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
