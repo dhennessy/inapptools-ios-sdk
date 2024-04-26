@@ -10,12 +10,12 @@ class MailingList {
     private let session: URLSession
     private let baseURL = URL(string: "https://api.inapptools.com/v1/")!
     
-    struct Member: Codable {
+    struct Member: Codable, Equatable {
         let uuid: String
         let email: String
     }
 
-    struct MemberChanges: Codable {
+    private struct MemberChanges: Codable {
         let email: String?
     }
 
@@ -28,6 +28,7 @@ class MailingList {
         let url = baseURL.appendingPathComponent("lists/\(listId)/members/\(email)/")
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
+        request.setValue(apiKey, forHTTPHeaderField: "X-API-Key")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(MemberChanges(email: email))
         let (data, response) = try await session.data(for: request)

@@ -12,6 +12,9 @@ let package = Package(
             name: "InAppTools",
             targets: ["InAppTools"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/WeTransfer/Mocker.git", .upToNextMajor(from: "3.0.0"))
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
@@ -19,7 +22,7 @@ let package = Package(
             name: "InAppTools"),
         .testTarget(
             name: "InAppToolsTests",
-            dependencies: ["InAppTools"]),
+            dependencies: ["InAppTools", "Mocker"]),
     ],
     swiftLanguageVersions: [.v5]
 )
