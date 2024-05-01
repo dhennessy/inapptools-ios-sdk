@@ -48,7 +48,7 @@ final class InAppToolsTests: XCTestCase {
 
     func testSubscribeSuccess() async throws {
         let url = URL(string: "https://api.inapptools.com/v1/lists/mylist/members/alice@example.com/")!
-        let memberAlice = MailingList.Member(uuid: "012345", email: "alice@example.com")
+        let memberAlice = MailingList.Member(uuid: "012345", email: "alice@example.com", first_name: nil, last_name: nil, name: nil, fields: nil, tags: nil)
         let data = try JSONEncoder().encode(memberAlice)
         var mock = Mock(url: url, statusCode: 201, data: [.put: data])
         mock.onRequestHandler = OnRequestHandler(jsonDictionaryCallback: { request, body in

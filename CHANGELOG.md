@@ -1,5 +1,6 @@
 # Changelog
 
-## [0.1.0] 2024-04-26
+## [0.1.0] 2024-05-01
 ### Added
-- Subscribe API for mailing lists
+- Subscribe/unscribe API for mailing lists
+- Add macOS & iOS platforms
