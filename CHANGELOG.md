@@ -1,6 +1,9 @@
 # Changelog
 
 ## Unreleased
+### Added
+- Add Privacy Manifest
+
 ### Changed
 - Update macOS and Swift versions in Cocoapod
 
