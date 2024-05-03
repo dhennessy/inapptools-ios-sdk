@@ -9,7 +9,8 @@ Pod::Spec.new do |s|
     s.source           = { :git => 'https://github.com/dhennessy/inapptools-ios-sdk.git', :tag => s.version.to_s }
   
     s.ios.deployment_target = '15.0'
-    s.swift_version = '5.0'
+    s.osx.deployment_target = '12.0'
+    s.swift_version = '5.7'
   
     s.source_files = 'Sources/InAppTools/**/*'
   end
