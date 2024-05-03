@@ -1,14 +1,9 @@
 import Foundation
 
-enum InAppToolsError: Error {
-    case invalidResponse
-    case requestError(Int, String)  // HTTP 4xx / 5xx
-}
-
 public class MailingList {
     private let apiKey: String
     private let session: URLSession
-    private let baseURL = URL(string: "https://api.inapptools.com/v1/")!
+    private let baseURL: URL
     
     public struct Member: Codable, Equatable {
         let uuid: String
@@ -29,9 +24,10 @@ public class MailingList {
         let tags: [String]?
     }
     
-    public init(apiKey: String, session: URLSession = .shared) {
+    public init(apiKey: String, session: URLSession = .shared, baseURL: URL = URL(string: "https://api.inapptools.com/v1/")!) {
         self.apiKey = apiKey
         self.session = session
+        self.baseURL = baseURL
     }
     
     public func subscribe(listId: String, email: String, first_name: String? = nil, last_name: String? = nil, name: String? = nil, fields: [String: String]? = nil, tags: [String]? = nil) async throws -> Member {
