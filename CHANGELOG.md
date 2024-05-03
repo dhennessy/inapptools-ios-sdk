@@ -3,6 +3,7 @@
 ## Unreleased
 ### Added
 - Add Privacy Manifest
+- Extra attributes for subscribers (first name, last name, (full) name, tags, fields)
 
 ### Changed
 - Update macOS and Swift versions in Cocoapod
