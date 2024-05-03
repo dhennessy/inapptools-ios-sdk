@@ -13,8 +13,9 @@ To use InAppTools, you'll first need to generate an APIKEY. To generate one, sig
 
 ## Requirements
 
-- Xcode 14 / Swift 5.5
+- Xcode 14 / Swift 5.7
 - iOS >= 15.0
+- macOS >= 12.0
 
 
 ## Usage
