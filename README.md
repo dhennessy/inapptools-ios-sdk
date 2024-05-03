@@ -1,7 +1,7 @@
 # InAppTools
 
-![Platform: iOS](https://img.shields.io/badge/Platform-iOS-lightgray.svg?style=flat)
-![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-4BC51D.svg?style=flat)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdhennessy%2Finapptools-ios-sdk%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/dhennessy/inapptools-ios-sdk)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdhennessy%2Finapptools-ios-sdk%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/dhennessy/inapptools-ios-sdk)
 ![CocoaPods compatible](https://img.shields.io/badge/Cocoapods-compatible-4BC51D.svg?style=flat)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow)
 
