@@ -8,8 +8,8 @@ public class MailingList {
     public struct Member: Codable, Equatable {
         let uuid: String
         let email: String
-        let first_name: String?
-        let last_name: String?
+        let firstName: String?
+        let lastName: String?
         let name: String?
         let fields: [String: String]?
         let tags: [String]?
@@ -31,7 +31,7 @@ public class MailingList {
     }
     
     public func subscribe(listId: String, email: String, firstName: String? = nil, lastName: String? = nil, name: String? = nil, fields: [String: String]? = nil, tags: [String]? = nil) async throws -> Member {
-        var jsonEncoder = JSONEncoder()
+        let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
         let body = try jsonEncoder.encode(MemberChanges(email: email, firstName: firstName, lastName: lastName, name: name, fields: fields, tags: tags))
         let url = baseURL.appendingPathComponent("lists/\(listId)/members/\(email)/")
@@ -42,9 +42,9 @@ public class MailingList {
         request.httpBody = body
         let (data, response) = try await session.data(for: request)
         try validateHttpResponse(data: data, response: response)
-        var jsonDecoder = JSONDecoder()
+        let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        return try JSONDecoder().decode(Member.self, from: data)
+        return try jsonDecoder.decode(Member.self, from: data)
     }
     
     // MARK: Implementation helpers

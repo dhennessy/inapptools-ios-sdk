@@ -20,17 +20,17 @@ To use InAppTools, you'll first need to generate an APIKEY. To generate one, sig
 
 ## Usage
 
-### Adding a user to your mailing list
-
-To get the id of your mailing list, sign into https://inapptools.com and copy the `List ID` of your mailing list.
-
-First, import the library:
+For all the following examples, import the library beforehand:
 
 ```
 import InAppTools
 ```
 
-Then, once the user has entered their email address:
+### Adding a user to your mailing list
+
+To get the id of your mailing list, sign into https://inapptools.com and copy the `List ID` of your mailing list.
+
+Once the user has entered their email address, you can subscribe them to a mailing list with:
 
 ```
 let member = try await MailingList(apiKey: apiKey).subscribe(listId: listId, email: email)
@@ -38,6 +38,19 @@ let member = try await MailingList(apiKey: apiKey).subscribe(listId: listId, ema
 
 If the `subscribe` method throws an exception, the most likely causes are an incorrect apiKey, or an incorrect listId. 
 Calling `subscribe` with an email that is already subscribed to your mailing list will not cause an error.
+
+### Adding a user with additional attributes
+
+There are a number of optional attributes that you can add to a subscription call:
+
+```
+let member = try await MailingList(apiKey: apiKey).subscribe(listId: listId, email: email, firstName: firstName, lastName: lastName, name: name, fields: fields, tags: tags)
+```
+
+- firstName, lastName, name: some mailing list platforms deal differently with a first / last name versus a full name. Prompt the user for whatever suits your mailing list platform and omit the rest.
+- fields: a set of key, value pairs that can be used to segment the users later.
+- tags: a set of "tags" that should be associated with this user.
+
 
 ## Installation
 

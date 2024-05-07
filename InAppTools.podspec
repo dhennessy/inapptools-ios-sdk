@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'InAppTools'
-    s.version          = '0.2.0'
+    s.version          = '0.3.0'
     s.summary          = "InAppTools is a library written in Swift that let's you easily add mobile users to your mailing lists."
   
     s.homepage         = 'https://github.com/dhennessy/inapptools-ios-sdk'

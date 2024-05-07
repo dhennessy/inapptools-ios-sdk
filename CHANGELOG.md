@@ -1,6 +1,9 @@
 # Changelog
 
 ## Unreleased
+
+
+## [0.3.0] 2024-05-07
 ### Added
 - Add Privacy Manifest
 - Extra attributes for subscribers (first name, last name, (full) name, tags, fields)
