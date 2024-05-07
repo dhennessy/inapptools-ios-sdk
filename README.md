@@ -79,6 +79,10 @@ pod 'InAppTools'
 
 See [CHANGELOG.md](https://github.com/dhennessy/inapptools-ios-sdk/blob/main/CHANGELOG.md) for a list of changes.
 
+## Reporting Issues
+
+If you should hit any issues while using InAppTools, we appreciate bug reports on [GitHub Issues](https://github.com/dhennessy/inapptools-ios-sdk/issues).
+
 ## License
 
 InAppTools is available under the MIT license. See [LICENSE.md](https://github.com/dhennessy/inapptools-ios-sdk/blob/main/LICENSE.md) for more info.
