@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+### Added
+- New `unsubscribe` method added
 
 
 ## [0.3.0] 2024-05-07
