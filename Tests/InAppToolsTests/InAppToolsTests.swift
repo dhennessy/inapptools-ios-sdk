@@ -4,7 +4,7 @@ import Mocker
 
 final class InAppToolsTests: XCTestCase {
     let apiKey = "xyzzy"
-
+    
     override func tearDownWithError() throws {
         Mocker.removeAll()
     }
@@ -27,7 +27,7 @@ final class InAppToolsTests: XCTestCase {
             }
         }
     }
-
+    
     func testSubscribeBadListId() async throws {
         let url = URL(string: "https://api.inapptools.com/v1/lists/badlist/members/alice@example.com/")!
         let data = try! JSONSerialization.data(withJSONObject: ["detail": "Unauthorized"])
@@ -45,10 +45,10 @@ final class InAppToolsTests: XCTestCase {
             }
         }
     }
-
+    
     func testSubscribeSuccess() async throws {
         let url = URL(string: "https://api.inapptools.com/v1/lists/mylist/members/alice@example.com/")!
-        let memberAlice = MailingList.Member(uuid: "012345", email: "alice@example.com", firstName: nil, lastName: nil, name: nil, fields: nil, tags: nil)
+        let memberAlice = MailingList.Member(uuid: "012345", email: "alice@example.com", firstName: nil, lastName: nil, name: nil, fields: nil, tags: nil, status: .unsubscribed)
         let data = try JSONEncoder().encode(memberAlice)
         var mock = Mock(url: url, statusCode: 201, data: [.put: data])
         mock.onRequestHandler = OnRequestHandler(jsonDictionaryCallback: { request, body in
@@ -59,6 +59,23 @@ final class InAppToolsTests: XCTestCase {
         mock.register()
         
         let member = try await MailingList(apiKey: apiKey).subscribe(listId: "mylist", email: "alice@example.com")
+        
+        XCTAssertEqual(member, memberAlice)
+    }
+    
+    func testUnsubscribeSuccess() async throws {
+        let url = URL(string: "https://api.inapptools.com/v1/lists/mylist/members/012345/")!
+        let memberAlice = MailingList.Member(uuid: "012345", email: "alice@example.com", firstName: nil, lastName: nil, name: nil, fields: nil, tags: nil, status: .subscribed)
+        let data = try JSONEncoder().encode(memberAlice)
+        var mock = Mock(url: url, statusCode: 201, data: [.put: data])
+        mock.onRequestHandler = OnRequestHandler(jsonDictionaryCallback: { request, body in
+            XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
+            XCTAssertEqual(request.value(forHTTPHeaderField: "X-API-Key"), self.apiKey)
+            XCTAssertEqual(body!["status"] as! String, "unsubscribed")
+        })
+        mock.register()
+        
+        let member = try await MailingList(apiKey: apiKey).unsubscribe(listId: "mylist", uuid: "012345")
         
         XCTAssertEqual(member, memberAlice)
     }
