@@ -39,6 +39,9 @@ let member = try await MailingList(apiKey: apiKey).subscribe(listId: listId, ema
 If the `subscribe` method throws an exception, the most likely causes are an incorrect apiKey, or an incorrect listId. 
 Calling `subscribe` with an email that is already subscribed to your mailing list will not cause an error.
 
+The returned `member` is a struct with a copy of the saved attributes, along with a `uuid` attribute. Save this somewhere 
+if you want to later offer the user the ability to unsubscribe
+
 ### Adding a user with additional attributes
 
 There are a number of optional attributes that you can add to a subscription call:
@@ -51,6 +54,17 @@ let member = try await MailingList(apiKey: apiKey).subscribe(listId: listId, ema
 - fields: a set of key, value pairs that can be used to segment the users later.
 - tags: a set of "tags" that should be associated with this user.
 
+The returned `member` is a struct with a copy of the saved attributes, along with a `uuid` attribute. Save this somewhere 
+if you want to later offer the user the ability to unsubscribe
+
+### Unsubscribing a user from your mailing list
+
+```
+let member = try await mailingList.unsubscribe(listId: listId, uuid: uuid)
+```
+
+Unsubscribing a user does not delete their record on the server - it simply marks them as 'unsubscribed'
+on the mailing list platform. To re-subscribe them, call the `subscribe` function again.
 
 ## Installation
 
